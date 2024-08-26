@@ -1,5 +1,5 @@
-WP_PATH = /home/kazokada/data/html
-DB_PATH = /home/kazokada/mariadb
+WP_PATH = /home/kazuhiro/data/wp
+DB_PATH = /home/kazuhiro/data/db
 
 all: up
 
@@ -8,16 +8,16 @@ up:
 	@mkdir -p $(DB_PATH)
 	@sudo chmod -R 755 $(WP_PATH)
 	@sudo chmod -R 755 $(DB_PATH)
-	docker-compose -f srcs/docker-compose.yml up
+	docker compose -f srcs/docker-compose.yml up
 
 build:
-	docker-compose -f srcs/docker-compose.yml build
+	docker compose -f srcs/docker-compose.yml build
 
 down:
-	docker-compose -f srcs/docker-compose.yml down
+	docker compose -f srcs/docker-compose.yml down
 
 stop:
-	docker-compose -f srcs/docker-compose.yml stop
+	docker compose -f srcs/docker-compose.yml stop
 
 volumerm:
 	@rm -rf $(WP_PATH)

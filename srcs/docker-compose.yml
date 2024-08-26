@@ -45,14 +45,14 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /home/kazuhiro/Desktop/inception/data/mariadb
+      device: /home/kazuhiro/data/db
       o : bind
       type : none
   wordpress:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/kazuhiro/Desktop/inception/data/wordpress
+      device: /home/kazuhiro/data/wp
       o : bind
       type : none
 
