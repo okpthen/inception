@@ -6,8 +6,8 @@ all: up
 up:
 	@mkdir -p $(WP_PATH)
 	@mkdir -p $(DB_PATH)
-	@sudo chmod -R 755 $(WP_PATH)
-	@sudo chmod -R 755 $(DB_PATH)
+	@sudo chmod -R 777 $(WP_PATH)
+	@sudo chmod -R 777 $(DB_PATH)
 	docker compose -f srcs/docker-compose.yml up
 
 build:
