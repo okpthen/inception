@@ -1,9 +1,9 @@
-
 services:
   mariadb:
-    image: mariadb:user
+    build: ./requirements/mariadb
+    image: mariadb
+    pull_policy: never
     container_name: mariadb
-    build: ./mariadb
     volumes:
       - mariadb:/var/lib/mysql
     env_file :
@@ -12,9 +12,10 @@ services:
       - inception
     restart: always
   nginx:
-    image: nginx:user
+    build: ./requirements/nginx
+    image: nginx
+    pull_policy: never
     container_name: nginx
-    build: ./nginx
     ports:
       - "443:443"
     depends_on:
@@ -27,9 +28,10 @@ services:
       - "kazokada.42.fr:127.0.0.1"
     restart: always
   wordpress:
-    image: wordpress:user
+    build: ./requirements/wordpress
+    image: wordpress
+    pull_policy: never
     container_name: wordpress
-    build: ./wordpress
     depends_on:
       - mariadb
     volumes:
@@ -45,14 +47,14 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /home/kazuhiro/data/db
+      device: /home/kazokada/data/db
       o : bind
       type : none
   wordpress:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/kazuhiro/data/wp
+      device: /home/kazokada/data/wp
       o : bind
       type : none
 
